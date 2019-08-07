@@ -24,7 +24,7 @@ namespace VF.Serenity.AutomationFramework.Tests.Tests
            
             var mailModel = new MailModel
             {
-                To = "valeraf23@gmail.com",
+                To = "",
                 Subject = "Some",
                 Body = "Some text"
             };
