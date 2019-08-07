@@ -1,0 +1,2 @@
+# Serenity.AutomationFramework
+AutomationFramework
