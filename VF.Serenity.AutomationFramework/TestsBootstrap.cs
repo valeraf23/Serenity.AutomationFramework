@@ -7,7 +7,7 @@ using VF.Serenity.AutomationFramework.Configuration;
 
 namespace VF.Serenity.AutomationFramework
 {
-    public sealed class TestsBootstrap
+    public sealed class TestsBootstrap : IDisposable
     {
         private static readonly Lazy<TestsBootstrap> Inst =
             new Lazy<TestsBootstrap>(() => new TestsBootstrap(), true);

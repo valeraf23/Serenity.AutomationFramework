@@ -21,7 +21,7 @@ namespace VF.Serenity.AutomationFramework.Tests.Tests
         [Test]
         public void Send_Emails()
         {
-           
+
             var mailModel = new MailModel
             {
                 To = "",
@@ -39,6 +39,11 @@ namespace VF.Serenity.AutomationFramework.Tests.Tests
         }
 
         [TearDown]
-        public void TearDown() => DriverService.Driver.Close();
+        public void TearDown()
+        {
+            TestsBootstrap.Instance.Dispose();
+            DriverService.Driver.Close();
+        }
+
     }
 }
