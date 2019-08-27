@@ -57,6 +57,21 @@ namespace VF.Serenity.AutomationFramework.Infrastructure.BaseTypes.Element
             }
         }
 
+        public TElement Find<TElement>(How how, string @using) where TElement : IHtmlElement, new()
+        {
+            var element = ElementFactory.Create<TElement>(this, new Locator(how, @using));
+            return element;
+        }
+
+        public IEnumerable<TElement> FindAll<TElement>(How how, string @using) where TElement : IHtmlElement, new()
+        {
+            var elementsCollection = CollectionFactory.Create<TElement>(this, new Locator(how, @using));
+            foreach (var element in elementsCollection)
+            {
+                yield return element;
+            }
+        }
+
         IWebElement INative.FindElement(Locator locator, int index) =>
             NativeElement.FindElement(locator.ToSeleniumLocator());
 
