@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace VF.Serenity.AutomationFramework.Extensions.StringExtensions
@@ -33,16 +32,15 @@ namespace VF.Serenity.AutomationFramework.Extensions.StringExtensions
 
         public static string GenerateString(int length)
         {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ012345678";
+            return GenerateString(length, chars);
+        }
 
-            var builder = new StringBuilder();
+        public static string GenerateString(int length, string chars)
+        {
             var random = new Random();
-            for (var i = 1; i < length + 1; i++)
-            {
-                var ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-
-            return builder.ToString();
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
